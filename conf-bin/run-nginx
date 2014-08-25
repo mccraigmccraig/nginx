@@ -1,0 +1,6 @@
+#!/bin/dash
+
+. /etc/nginx/conf-bin/.profile
+cat /etc/nginx/site-templates/clustermap2 | /etc/nginx/conf-bin/expand-template-vars > /etc/nginx/sites-enabled/clustermap2
+
+exec nginx

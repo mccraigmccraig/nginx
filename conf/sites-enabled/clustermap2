@@ -1,0 +1,25 @@
+server {
+  listen {{{PORT}}} default_server;
+  listen [::]:{{{PORT}}} default_server ipv6only=on;
+
+  # Make site accessible from http://localhost/
+  server_name clustermap.trampolinesystems.com *.clustermap.trampolinesystems.com;
+
+  location / {
+    proxy_set_header Host $http_host;
+    proxy_pass http://{{{GATEWAY_IP_ADDRESS}}}:{{{PROXY_PORT}}};
+#    proxy_cache clustermap;
+#    proxy_cache_key "$scheme$http_host$request_uri";
+#    proxy_cache_valid  200 302  60m;
+#    proxy_cache_valid  404      5m;
+  }
+
+  location /api {
+    proxy_set_header Host $http_host;
+    proxy_pass http://{{{GATEWAY_IP_ADDRESS}}}:{{{PROXY_PORT}}};
+    proxy_cache clustermap;
+    proxy_cache_key "$scheme$http_host$request_uri";
+    proxy_cache_valid  200 302  60m;
+    proxy_cache_valid  404      5m;
+  }
+}

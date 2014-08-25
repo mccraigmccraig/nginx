@@ -1,0 +1,3 @@
+#!/bin/dash
+
+sed s/{{{PORT}}}/${PORT}/g | sed s/{{{PROXY_PORT}}}/${PROXY_PORT}/g | sed s/{{{GATEWAY_IP_ADDRESS}}}/${GATEWAY_IP_ADDRESS}/g
