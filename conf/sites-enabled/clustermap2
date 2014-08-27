@@ -7,7 +7,7 @@ server {
 
   location / {
     proxy_set_header Host $http_host;
-    proxy_pass http://{{{GATEWAY_IP_ADDRESS}}}:{{{PROXY_PORT}}};
+    proxy_pass http://{{{PROXY_IP_ADDRESS}}}:{{{PROXY_PORT}}};
 #    proxy_cache clustermap;
 #    proxy_cache_key "$scheme$http_host$request_uri";
 #    proxy_cache_valid  200 302  60m;
@@ -16,7 +16,7 @@ server {
 
   location /api {
     proxy_set_header Host $http_host;
-    proxy_pass http://{{{GATEWAY_IP_ADDRESS}}}:{{{PROXY_PORT}}};
+    proxy_pass http://{{{PROXY_IP_ADDRESS}}}:{{{PROXY_PORT}}};
     proxy_cache clustermap;
     proxy_cache_key "$scheme$http_host$request_uri";
     proxy_cache_valid  200 302  60m;
